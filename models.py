@@ -19,7 +19,7 @@ class User(db.Model):
     id = db.Column(db.String(36), primary_key=True, default=generate_uuid)
     username = db.Column(db.String(64), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    reading_streak = db.Column(db.Integer, default=0)
+    reading_streak = db.Column(db.Integer, default=0) # Question 3: stats endpoint uses this
     last_finished_at = db.Column(db.DateTime, nullable=True)
     joined_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
@@ -70,8 +70,14 @@ class ReadingEvent(db.Model):
     started_at  — when the user began reading (always set)
     finished_at — when the user marked the book as finished (None if still reading)
     """
+    # Question 1:
+    # Always set
+    # user_id, book_id, started_at,
+    
+    # Can be null
+    # id, finished_at
 
-    id = db.Column(db.String(36), primary_key=True, default=generate_uuid)
+    id = db.Column(db.String(36), primary_key=True, default=generate_uuid) 
     user_id = db.Column(db.String(36), db.ForeignKey("user.id"), nullable=False)
     book_id = db.Column(db.String(36), db.ForeignKey("book.id"), nullable=False)
     started_at = db.Column(
@@ -80,7 +86,7 @@ class ReadingEvent(db.Model):
     finished_at = db.Column(db.DateTime, nullable=True)
 
     __table_args__ = (
-        db.UniqueConstraint("user_id", "book_id", name="unique_user_book"),
+        db.UniqueConstraint("user_id", "book_id", name="unique_user_book"), # Question 2: Unique Constraint prevent the same user and book combo from being used again
     )
 
     def to_dict(self):

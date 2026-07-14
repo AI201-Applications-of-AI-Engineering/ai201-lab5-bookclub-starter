@@ -105,6 +105,7 @@ def mark_as_finished(user_id: str, book_id: str) -> ReadingEvent:
     return event
 
 
+# filters by user, then by finished_at (isnot=None), then ordered in descending order
 def get_reading_history(user_id: str) -> list[ReadingEvent]:
     """
     Return all books a user has finished, most recently finished first.

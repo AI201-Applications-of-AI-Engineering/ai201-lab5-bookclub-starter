@@ -8,7 +8,7 @@ and total pages read.
 from datetime import date, datetime, timezone
 from services import reading_service
 
-
+# takes user_id, gets reading history from user_id, and uses the data to calculate streak
 def calculate_streak(user_id: str) -> int:
     """
     Calculate a user's current reading streak in consecutive days.
@@ -52,7 +52,7 @@ def calculate_streak(user_id: str) -> int:
 
     return streak
 
-
+# uses user_id to get reading history, and adds all the books that has matching year + month with today, returns the sum
 def books_this_month(user_id: str) -> int:
     """
     Count the number of books the user finished in the current calendar month.
@@ -71,7 +71,7 @@ def books_this_month(user_id: str) -> int:
         if e.finished_at.year == today.year and e.finished_at.month == today.month
     )
 
-
+# uses user_id to get reading history, adds together all the book pages for all the books in reading history
 def total_pages_read(user_id: str) -> int:
     """
     Sum the page counts of all books the user has finished.
