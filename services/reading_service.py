@@ -118,11 +118,16 @@ def get_reading_history(user_id: str) -> list[ReadingEvent]:
 
     Returns:
         List of ReadingEvent objects ordered by finished_at descending.
+
+    The docstring says: return all books a user has finished, most recently finished first.
+    The code does:      returns earliest first
+    The bug is on line: order_by
+    The fix is: change started_at to finished_at
     """
     return (
         ReadingEvent.query.filter_by(user_id=user_id)
         .filter(ReadingEvent.finished_at.isnot(None))
-        .order_by(ReadingEvent.started_at.desc())
+        .order_by(ReadingEvent.finished_at.desc())
         .all()
     )
 

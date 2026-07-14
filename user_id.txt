@@ -1,4 +1,15 @@
 User IDs (use these to test the API):
-  alex:   a82c1922-a5d1-4c16-b347-a3b9d63e4bbe
-  priya:  37b17afc-96d2-4235-9525-4ad547bc0740
-  marcus: c12367d2-483f-4897-8326-86dd9e46e34
+  alex:   0787e863-8c1c-4db4-a46e-99ca8546b539
+  {
+    "books_this_month": 3,
+    "reading_streak": 0,
+    "total_pages_read": 814,
+    "user_id": "0787e863-8c1c-4db4-a46e-99ca8546b539"
+  }
+  priya:  fe2a83a0-0fa5-42d2-aa05-e21acddb0cfa
+  marcus: 281c3136-279c-4a11-a5d7-483c5fd4f671
+
+  User IDs (use these to test the API):
+  alex:   1365517c-b73d-4382-a43f-438e09be2498
+  priya:  0092a6ef-457e-4ab7-8be6-efee8da9313f
+  marcus: 4eaa0ad5-ef9e-4db6-8f63-d9e380501fb2
